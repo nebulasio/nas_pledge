@@ -7,16 +7,16 @@ var neb = new Neb();
 
 
 // mainnet
-var chainId = 1;
-var pledgeContract = "n1n5Fctkjx2pA7iLX8rgRyCa7VKinGFNe9H";
-var explorerLink = "https://explorer.nebulas.io/#/tx/";
-neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+//var chainId = 1;
+//var pledgeContract = "n1n5Fctkjx2pA7iLX8rgRyCa7VKinGFNe9H";
+//var explorerLink = "https://explorer.nebulas.io/#/tx/";
+//neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
 
 // testnet
-// var chainId = 1001;
-// var pledgeContract = "n1yrXNjgp85xXbEPg2wZJikp1cm2Vs7rKfu";
-// var explorerLink = "https://explorer.nebulas.io/#/testnet/tx/";
-// neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+var chainId = 1001;
+var pledgeContract = "n1yrXNjgp85xXbEPg2wZJikp1cm2Vs7rKfu";
+var explorerLink = "https://explorer.nebulas.io/#/testnet/tx/";
+neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
 
 
 var fileName = null;
