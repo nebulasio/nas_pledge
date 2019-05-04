@@ -6,21 +6,18 @@ var NebUnit = nebulas.Unit;
 var neb = new Neb();
 
 
-// TODO:
-// var chainId = 1;
-// var explorerLink = "https://explorer.nebulas.io/#/tx/";
-// neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
-// TODO:
-// var pledgeContract = "n1mBSJqcvPoiMeLFN9CFxmXsjDNB9bJhm1W";
+// mainnet
+var chainId = 1;
+var pledgeContract = "n1n5Fctkjx2pA7iLX8rgRyCa7VKinGFNe9H";
+var explorerLink = "https://explorer.nebulas.io/#/tx/";
+neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
 
-var chainId = 1001;
-var explorerLink = "https://explorer.nebulas.io/#/testnet/tx/";
+// testnet
+// var chainId = 1001;
+// var pledgeContract = "n1yrXNjgp85xXbEPg2wZJikp1cm2Vs7rKfu";
+// var explorerLink = "https://explorer.nebulas.io/#/testnet/tx/";
+// neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
 
-// TODO
-// Update it to mainnet after release
-neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
-
-var pledgeContract = "n1yrXNjgp85xXbEPg2wZJikp1cm2Vs7rKfu";
 
 var fileName = null;
 var keystore = null;
