@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Export</title>
+    <script type="text/javascript" src="libs/nebulas.js"></script>
+    <script type="text/javascript" src="libs/FileSaver.min.js"></script>
+    <script type="text/javascript" src="libs/popper.min.js"></script>
+    <script type="text/javascript" src="libs/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="libs/bootstrap-4.0.0-dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="libs/bootstrap-4.0.0-dist/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="libs/bootbox.min.js"></script>
+    <script type="text/javascript" src="libs/Blob.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/export.js"></script>
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap-4.0.0-dist/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/app.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="step row">
+        <div class="col-12">Step 1: Inquire Information (Online Computer)</div>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+        <div class="col-6">
+            <div class="input_title">From Address:</div>
+            <div class="edt_container">
+                <input id="from_address" type="text" valid="address|Please enter the correct neb address"/>
+            </div>
+        </div>
+        <div class="col-6" id="balance_container">
+            <div class="input_title">Balance:</div>
+            <div class="edt_container">
+                <input id="balance" type="text" readonly="readonly"/>
+            </div>
+        </div>
+    </div>
+
+    <div id="information" class="row" style="margin-top: 10px">
+        <div class="col-6">
+            <div class="input_title">Gas price:</div>
+            <div class="edt_container">
+                <input id="gas_price1" type="text" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="input_title">Nonce:</div>
+            <div class="edt_container">
+                <input id="nonce1" type="text" readonly="readonly"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="edt_container" style="margin-top: 10px">
+        <button id="btn_get_info">Inquire Information</button>
+    </div>
+
+    <div class="step row">
+        <div class="col-12">Step 2: Generate Transaction (Offline Computer)</div>
+    </div>
+
+    <div class="input_title">Keystore:</div>
+    <div class="edt_container" style="position: relative">
+        <button id="btn_keystore">Select the keystore file</button>
+        <input id="file" type="file" class="file mask"/>
+    </div>
+
+    <div id="pwd_container">
+        <div class="input_title">Password:</div>
+        <div class="edt_container">
+            <input id="pwd" type="password" valid="required|Please input password."/>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 5px">
+        <div class="col-6">
+            <div class="input_title">Pledge contract:</div>
+            <div class="edt_container">
+                <input id="contract" type="text" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="input_title">Action:</div>
+            <div id="action_container" class="dropdown edt_container">
+                <div href="#" class="dropdown-toggle menu_handler" data-toggle="dropdown">
+                    <span id="action_text">Select</span>
+                    <b class="caret" style="position: absolute; right: 10px"></b>
+                </div>
+                <ul class="dropdown-menu">
+                    <li class="menu_item" tag="0"><a href="#">Stop pledge</a></li>
+                    <li class="menu_item" tag="1"><a href="#">Export data</a></li>
+                    <li class="menu_item" tag="2"><a href="#">Transfer amount</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 5px">
+        <div id="nat_contract_container" class="col-6" style="display: none;">
+            <div class="input_title">NAT contract:</div>
+            <div class="edt_container">
+                <input id="nat_contract" type="text" valid="address|Please enter the correct neb address."/>
+            </div>
+        </div>
+        <div id="nonce_container" class="col-12">
+            <div class="input_title">Nonce:</div>
+            <div class="edt_container">
+                <input id="nonce2" type="text" valid="int|Please enter the correct nonce."/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 5px">
+        <div class="col-6">
+            <div class="input_title">Gas price:</div>
+            <div class="edt_container">
+                <input id="gas_price2" type="text" value="1000000" valid="int|Please enter the correct gas price."/>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="input_title">Gas limit:</div>
+            <div class="edt_container">
+                <input id="gas_limit" type="text" value="200000" valid="int|Please enter the correct gas limit."/>
+            </div>
+        </div>
+    </div>
+
+    <div class="edt_container" style="margin-top: 10px">
+        <button id="btn_generate">Generate</button>
+    </div>
+
+    <div class="step row">
+        <div class="col-12">Step 3: Send / Publish Transaction (Online Computer)</div>
+    </div>
+    <div class="step row">
+        <div class="col-12">
+            <div class="edt_container" style="height: 100px;">
+                <textarea id="output" valid="required|Please enter the raw transaction."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+        <div id="send_container" class="col-12">
+            <div class="edt_container">
+                <button id="btn_send">Send</button>
+            </div>
+        </div>
+        <div id="save_container" class="col-6">
+            <div class="edt_container">
+                <button id="btn_save">Save to file</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+        <div class="col-12">
+            <div id="result"></div>
+            <a id="hash" target="_blank"></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

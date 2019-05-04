@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pledge Contract Test</title>
+    <script type="text/javascript" src="../libs/nebulas.js"></script>
+    <script type="text/javascript" src="neb_context.js"></script>
+    <script type="text/javascript" src="../contracts/pledge.js"></script>
+    <script type="text/javascript" src="../contracts/test_nat_contract.js"></script>
+
+    <script type="text/javascript">
+        localStorage.clear();
+
+        let pledgeContractAddress = "n1kn4VwKKe8duFxyYAwYVb37ZoJo6ow2fRQ";
+        let natContractAddress = "n1uo3Ey86SKsQcTXWR6ZPetWgmTYnF3C2ap";
+
+        let managerAddress = "n1Z6MhSZa321SnpiKfUWiybQSG3GCmRHunv";
+        let customerAddress = "n1YPMjEDMrZhroKmB1xDBhadygwWHC4zTwm";
+
+        let unit = new BigNumber(10).pow(18);
+
+        BlockchainTool.transfer(null, customerAddress, new BigNumber(1000).mul(unit));
+
+        BlockchainTool.registerContract(pledgeContractAddress, Pledge);
+        BlockchainTool.registerContract(natContractAddress, TestNat);
+        // init pledge
+        BlockchainTool.callContract(customerAddress, pledgeContractAddress, 0, "init", [[managerAddress]]);
+
+        function pledgeTest(value) {
+            BlockchainTool.callContract(customerAddress, pledgeContractAddress, value, "pledge", []);
+        }
+
+        function cancelPledgeTest() {
+            BlockchainTool.callContract(customerAddress, pledgeContractAddress, 0, "cancelPledge", []);
+        }
+
+        function stopPledgeTest() {
+            BlockchainTool.callContract(managerAddress, pledgeContractAddress, 0, "stopPledge", []);
+        }
+
+        function exportTest() {
+            BlockchainTool.callContract(managerAddress, pledgeContractAddress, 0, "exportDataToNat", [natContractAddress]);
+        }
+
+        function transferAmountTest() {
+            BlockchainTool.callContract(managerAddress, pledgeContractAddress, 0, "transferAmount", [natContractAddress]);
+        }
+
+        function getPledgeAddressIndexesTest() {
+            let r = BlockchainTool.callContract(customerAddress, pledgeContractAddress, 0, "getAddressIndexes", []);
+            alert("PledgeAddressIndexes:\n" + JSON.stringify(r));
+        }
+
+        function getPledgeAddressesTest() {
+            let r = BlockchainTool.callContract(customerAddress, pledgeContractAddress, 0, "getAddresses", [0]);
+            alert("PledgeAddresses:\n" + JSON.stringify(r));
+        }
+
+        function getPledgesTest() {
+            let r = BlockchainTool.callContract(customerAddress, pledgeContractAddress, 0, "getPledgeWithAddress", [customerAddress]);
+            alert("Pledges:\n" + JSON.stringify(r));
+        }
+
+        function getReceiveAddressIndexesTest() {
+            let r = BlockchainTool.callContract(customerAddress, natContractAddress, 0, "getAddressIndexes", []);
+            alert("ReceiveAddressIndexes:\n" + JSON.stringify(r));
+        }
+
+        function getReceiveAddressesTest() {
+            let r = BlockchainTool.callContract(customerAddress, natContractAddress, 0, "getAddresses", [0]);
+            alert("ReceiveAddresses:\n" + JSON.stringify(r));
+        }
+
+        function getReceivePledgeTest() {
+            let r = BlockchainTool.callContract(customerAddress, natContractAddress, 0, "getPledgeWithAddress", [customerAddress]);
+            alert("ReceivePledge:\n" + JSON.stringify(r));
+        }
+
+        function recyclingTest() {
+            BlockchainTool.callContract(customerAddress, natContractAddress, 0, "recycling", []);
+            alert(BlockchainTool.getBalance(managerAddress).div(unit).toString(10));
+        }
+
+        function main() {
+            try {
+                pledgeTest(new BigNumber(2).mul(unit));
+                // pledgeTest(new BigNumber(1.52).mul(unit));
+                cancelPledgeTest();
+                stopPledgeTest();
+                exportTest();
+                transferAmountTest();
+                getPledgeAddressIndexesTest();
+                getPledgeAddressesTest();
+                getPledgesTest();
+                getReceiveAddressIndexesTest();
+                getReceiveAddressesTest();
+                getReceivePledgeTest();
+                recyclingTest();
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+        main();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

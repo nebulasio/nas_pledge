@@ -1,0 +1,180 @@
+html {
+    height: 100%;
+    background: linear-gradient(45deg, #4F4F84, #21213C);
+}
+
+body {
+    height: 100%;
+    color: white;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    overflow: scroll;
+}
+
+.file {
+    opacity: 0;
+}
+
+input {
+    padding: 0 10px;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #E6E7EB33;
+    border-style: solid;
+    outline: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: white;
+}
+
+input:focus {
+    border-color: #4D6AFF;
+}
+
+textarea {
+    height: 100px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #E6E7EB33;
+    border-style: solid;
+    outline: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: white;
+}
+
+textarea:focus {
+    border-color: #4D6AFF;
+}
+
+button {
+    width: 100%;
+    height: 40px;
+    border-radius: 6px;
+    border-width: 0;
+    background-color: #4560E6;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #5671F7;
+}
+
+button:focus {
+    outline: none;
+}
+
+.neb_boot_box {
+    color: #333333;
+}
+
+.edt_container {
+    height: 40px;
+    width: 100%;
+    position: relative;
+}
+
+.edt_container button {
+    height: 100%;
+    width: 100%;
+}
+
+.edt_container input {
+    height: 100%;
+    width: 100%;
+}
+
+.edt_container .tips {
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    opacity: 0.6;
+    text-align: right;
+    padding-right: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.input_error {
+    border-color: #FF4D90;
+}
+
+.edt_container textarea {
+    width: 100%;
+    height: 100%;
+}
+
+.edt_container .mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+}
+
+.input_title {
+    opacity: 0.6;
+    padding: 5px 0;
+}
+
+.step {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.menu_handler {
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    padding-left: 10px;
+    border-radius: 6px;
+    border-width: 0;
+    background-color: #4560E6;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.menu:hover {
+    background: #ffffffaa;
+}
+
+.menu_item {
+    line-height: 35px;
+    padding: 0 10px;
+    color: #333333;
+    font-size: 14px;
+}
+
+.menu_item:hover {
+    background: #eeeeee;
+}
+
+.menu_item a {
+    color: #333333;
+}
+
+.menu_item a:hover {
+    color: #333333;
+    text-decoration: none;
+}
+
+.nav-tabs a {
+    width: 150px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 20px;
+    color: #ffffff66;
+}
+
+.nav-tabs .active {
+    color: white;
+}
