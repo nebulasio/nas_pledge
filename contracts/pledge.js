@@ -181,16 +181,20 @@ Pledge.prototype = {
         let a = Blockchain.transaction.from;
         let p = this._getPledge(a);
         let v = new BigNumber(p.v).mul(this._unit);
-        Blockchain.transfer(a, v);
-        p.c = true;
-        this._setPledge(a, p);
-        Event.Trigger("transfer", {
-            Transfer: {
-                from: Blockchain.transaction.to,
-                to: a,
-                value: v,
-            }
-        });
+        let r = Blockchain.transfer(a, v);
+        if (r) {
+            p.c = true;
+            this._setPledge(a, p);
+            Event.Trigger("transferCancelPledge", {
+                Transfer: {
+                    from: Blockchain.transaction.to,
+                    to: a,
+                    value: v,
+                }
+            });
+        } else {
+            throw ("Cancel pledge failed.");
+        }
     },
 
     stopPledge: function () {
@@ -203,7 +207,7 @@ Pledge.prototype = {
         let b = Blockchain.getAccountState(Blockchain.transaction.to).balance;
         let r = Blockchain.transfer(natContractAddress, new BigNumber(b));
         if (r) {
-            Event.Trigger("transfer", {
+            Event.Trigger("transferAmount", {
                 Transfer: {
                     from: Blockchain.transaction.to,
                     to: natContractAddress,
@@ -248,7 +252,7 @@ Pledge.prototype = {
     },
 
     accept: function () {
-        Event.Trigger("transfer", {
+        Event.Trigger("transferAccept", {
             Transfer: {
                 from: Blockchain.transaction.from,
                 to: Blockchain.transaction.to,
