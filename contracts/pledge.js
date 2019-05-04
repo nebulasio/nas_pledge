@@ -214,6 +214,8 @@ Pledge.prototype = {
                     value: b,
                 }
             });
+        } else {
+            throw("Transfer Amount failed");
         }
         return r;
     },
