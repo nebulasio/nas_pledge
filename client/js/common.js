@@ -20,7 +20,7 @@ var explorerLink = "https://explorer.nebulas.io/#/testnet/tx/";
 // Update it to mainnet after release
 neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
 
-var pledgeContract = "n1he2V7zqELAScrK9KhDkkxPhSf9g8vQ8aZ";
+var pledgeContract = "n1tzQNfMS2wwU9c4GJTSBewdVxLoqPwzmnG";
 
 var fileName = null;
 var keystore = null;
