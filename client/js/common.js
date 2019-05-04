@@ -15,6 +15,9 @@ var neb = new Neb();
 
 var chainId = 1001;
 var explorerLink = "https://explorer.nebulas.io/#/testnet/tx/";
+
+// TODO
+// Update it to mainnet after release
 neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
 
 var pledgeContract = "n1he2V7zqELAScrK9KhDkkxPhSf9g8vQ8aZ";

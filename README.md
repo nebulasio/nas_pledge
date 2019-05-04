@@ -9,3 +9,4 @@
   * load keystore
   * generate raw pledge transaction
   * broadcast in when connect to Internet
+
