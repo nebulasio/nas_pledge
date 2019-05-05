@@ -73,7 +73,7 @@ function _queryPledgeState() {
         if (amount == null) {
             return;
         }
-        $("#nano_pledge_state").val(amount === 0 ?
+        $("#nano_pledge_state").val(amount === "0" ?
             a + " have not pledge." :
             a + " pledge " + amount + " NAS."
         );
@@ -104,9 +104,9 @@ function getPledgeAmount(address, callback) {
             } else {
                 let p = JSON.parse(r.result);
                 if (p && !p.c) {
-                    callback(p.v);
+                    callback(NebUtils.toBigNumber(p.v).toString(10));
                 } else {
-                    callback(0);
+                    callback("0");
                 }
             }
         }).catch(function (e) {
@@ -125,7 +125,7 @@ function genCode() {
     }
     var value = "0";
     if (nanoAction === 0) {
-        value = NebUnit.nasToBasic($("#nano_amount").val());
+        value = NebUnit.nasToBasic($("#nano_amount").val()).toString(10);
     }
     var params = {
         "pageParams": {

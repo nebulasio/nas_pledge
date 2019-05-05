@@ -248,7 +248,7 @@ function getInfo() {
                             return;
                         }
                         f();
-                        stateView.val(amount === 0 ?
+                        stateView.val(amount === "0" ?
                             address + " have not pledge." :
                             address + " pledge " + amount + " NAS."
                         );
