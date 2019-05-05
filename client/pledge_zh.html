@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>NAS Pledge | Nebulas.io</title>
+        <title>NAS 质押 | Nebulas.io</title>
         <script type="text/javascript" src="libs/nebulas.js"></script>
         <script type="text/javascript" src="libs/FileSaver.min.js"></script>
         <script type="text/javascript" src="libs/jquery-3.3.1.min.js"></script>
@@ -26,17 +26,17 @@
                 <div class="col-10">
                     <ul id="myTab" class="nav nav-tabs">
                         <li>
-                            <a href="#nasnano" data-toggle="tab">NAS nano Pro</a>
+                            <a href="#nasnano" data-toggle="tab">通过 NAS nano Pro 扫描质押</a>
                         </li>
                         <li style="margin-left: 20px;">
-                            <a href="#offline" data-toggle="tab">Offline</a>
+                            <a href="#offline" data-toggle="tab">离线质押</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-2 set-lang">
                     <nav class="nav">
-                        <a class="nav-link active" href="/client/pledge.html">English</a>
-                        <a class="nav-link" href="/client/pledge_zh.html">中文</a>
+                        <a class="nav-link" href="/client/pledge.html">English</a>
+                        <a class="nav-link active" href="/client/pledge_zh.html">中文</a>
                     </nav>
                 </div>
             </div>
@@ -45,18 +45,18 @@
             <div class="tab-pane fade in active" id="offline">
                 <div class="container">
                     <div class="step row">
-                        <div class="col-12">Step 1: Get Account Info (Online Computer)</div>
+                        <div class="col-12">步骤 1: 获得账户信息 (Online)</div>
                     </div>
 
                     <div class="row" style="margin-top: 10px">
                         <div class="col-6">
-                            <div class="input_title">From Address:</div>
+                            <div class="input_title">NAS 地址:</div>
                             <div class="edt_container">
                                 <input id="from_address" type="text" valid="address|Please enter the correct neb address" />
                             </div>
                         </div>
                         <div class="col-6" id="balance_container">
-                            <div class="input_title">Balance:</div>
+                            <div class="input_title">余额:</div>
                             <div class="edt_container">
                                 <input id="balance" type="text" readonly="readonly" />
                             </div>
@@ -81,7 +81,7 @@
 
                         <div class="row" style="margin-top: 10px">
                             <div class="col-12">
-                                <div class="input_title">Pledge state:</div>
+                                <div class="input_title">质押状态:</div>
                                 <div class="edt_container">
                                     <input id="pledge_state" type="text" readonly="readonly" />
                                 </div>
@@ -90,21 +90,21 @@
                     </div>
 
                     <div class="edt_container" style="margin-top: 10px">
-                        <button id="btn_get_info">Get Account Info</button>
+                        <button id="btn_get_info">点击获得账户信息</button>
                     </div>
 
                     <div class="step row">
-                        <div class="col-12">Step 2: Generate Transaction (Offline Computer)</div>
+                        <div class="col-12">步骤 2: 生成转账信息 (Offline)</div>
                     </div>
 
                     <div class="input_title">Keystore:</div>
                     <div class="edt_container" style="position: relative">
-                        <button id="btn_keystore">Select the keystore file</button>
+                        <button id="btn_keystore">选择 keystore 文件</button>
                         <input id="file" type="file" class="file mask" />
                     </div>
 
                     <div id="pwd_container">
-                        <div class="input_title">Password:</div>
+                        <div class="input_title">密码:</div>
                         <div class="edt_container">
                             <input id="pwd" type="password" valid="required|Please input password." />
                         </div>
@@ -112,21 +112,21 @@
 
                     <div class="row" style="margin-top: 5px">
                         <div class="col-6">
-                            <div class="input_title">Contract:</div>
+                            <div class="input_title">合约地址:</div>
                             <div class="edt_container">
                                 <input id="contract" type="text" readonly="readonly" />
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="input_title">Action:</div>
+                            <div class="input_title">操作:</div>
                             <div id="action_container" class="dropdown edt_container">
                                 <div href="#" class="dropdown-toggle menu_handler" data-toggle="dropdown">
-                                    <span id="action_text">Pledge</span>
+                                    <span id="action_text">质押</span>
                                     <b class="caret" style="position: absolute; right: 10px"></b>
                                 </div>
                                 <ul class="dropdown-menu">
-                                    <li class="menu_item" target="action_text" tag="0"><a href="#">Pledge</a></li>
-                                    <li class="menu_item" target="action_text" tag="1"><a href="#">Cancel pledge</a></li>
+                                    <li class="menu_item" target="action_text" tag="0"><a href="#">质押</a></li>
+                                    <li class="menu_item" target="action_text" tag="1"><a href="#">取消质押</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -155,7 +155,7 @@
                             </div>
                         </div>
                         <div id="amount_container" class="col-6">
-                            <div class="input_title">Pledge nas amount:</div>
+                            <div class="input_title">质押 NAS 数量:</div>
                             <div class="edt_container">
                                 <input id="amount" type="text" valid="amount,pledgeAmount" />
                                 <div class="tips">NAS</div>
@@ -164,11 +164,11 @@
                     </div>
 
                     <div class="edt_container" style="margin-top: 10px">
-                        <button id="btn_generate">Generate</button>
+                        <button id="btn_generate">生成转账信息</button>
                     </div>
 
                     <div class="step row">
-                        <div class="col-12">Step 3: Send / Publish Transaction (Online Computer)</div>
+                        <div class="col-12">步骤 3: 发送 / 发布转账 (Online)</div>
                     </div>
                     <div class="step row">
                         <div class="col-12">
@@ -181,12 +181,12 @@
                     <div class="row" style="margin-top: 10px">
                         <div id="send_container" class="col-12">
                             <div class="edt_container">
-                                <button id="btn_send">Send</button>
+                                <button id="btn_send">发送</button>
                             </div>
                         </div>
                         <div id="save_container" class="col-6">
                             <div class="edt_container">
-                                <button id="btn_save">Save to file</button>
+                                <button id="btn_save">保存文件</button>
                             </div>
                         </div>
                     </div>
@@ -202,18 +202,18 @@
             <div class="tab-pane fade" id="nasnano">
                 <div class="container">
                     <div class="step row">
-                        <div class="col-12">Inquire Pledge State</div>
+                        <div class="col-12">查询质押状态</div>
                     </div>
 
                     <div class="row" style="margin-top: 10px">
                         <div class="col-6">
-                            <div class="input_title">From Address:</div>
+                            <div class="input_title">查询 NAS 地址:</div>
                             <div class="edt_container">
                                 <input id="nano_from_address" type="text" valid="address|Please enter the correct neb address" />
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="input_title">Pledge state:</div>
+                            <div class="input_title">质押状态:</div>
                             <div class="edt_container">
                                 <input id="nano_pledge_state" type="text" readonly="readonly" />
                             </div>
@@ -221,30 +221,30 @@
                     </div>
 
                     <div class="edt_container" style="margin-top: 10px">
-                        <button id="btn_nano_get_info">Inquire</button>
+                        <button id="btn_nano_get_info">查询</button>
                     </div>
 
                     <div class="step row">
-                        <div class="col-12">Create a QR code</div>
+                        <div class="col-12">生成二维码</div>
                     </div>
 
                     <div class="row" style="margin-top: 5px">
                         <div class="col-6">
-                            <div class="input_title">Contract:</div>
+                            <div class="input_title">合约地址:</div>
                             <div class="edt_container">
                                 <input id="nano_contract" type="text" readonly="readonly" />
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="input_title">Action:</div>
+                            <div class="input_title">操作:</div>
                             <div id="nano_action_container" class="dropdown edt_container">
                                 <div href="#" class="dropdown-toggle menu_handler" data-toggle="dropdown">
-                                    <span id="nano_action_text">Pledge</span>
+                                    <span id="nano_action_text">质押</span>
                                     <b class="caret" style="position: absolute; right: 10px"></b>
                                 </div>
                                 <ul class="dropdown-menu">
-                                    <li class="menu_item" target="nano_action_text" tag="0"><a href="#">Pledge</a></li>
-                                    <li class="menu_item" target="nano_action_text" tag="1"><a href="#">Cancel pledge</a></li>
+                                    <li class="menu_item" target="nano_action_text" tag="0"><a href="#">质押</a></li>
+                                    <li class="menu_item" target="nano_action_text" tag="1"><a href="#">取消质押</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -252,7 +252,7 @@
 
                     <div id="nano_amount_container" class="row" style="margin-top: 5px">
                         <div class="col-12">
-                            <div class="input_title">Pledge nas amount:</div>
+                            <div class="input_title">质押NAS数量:</div>
                             <div class="edt_container">
                                 <input id="nano_amount" type="text" valid="amount,pledgeAmount" />
                                 <div class="tips">NAS</div>
@@ -261,13 +261,13 @@
                     </div>
 
                     <div class="edt_container" style="margin-top: 10px">
-                        <button id="btn_nano_generate">Generate QR code</button>
+                        <button id="btn_nano_generate">点击生成二维码</button>
                     </div>
 
                     <div id="code_container" class="row" style="margin-top: 10px; display: none;">
                         <div class="col-12 text-center">
                             <div id="code" style="text-align:center; padding: 2rem; background: #ffffff;"></div>
-                            <div>Scan QR code with NAS nano Pro</div>
+                            <div>请使用 NAS nano Pro 扫描</div>
                         </div>
                     </div>
                 </div>
