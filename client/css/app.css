@@ -1,12 +1,12 @@
 html {
     height: 100%;
-    background: linear-gradient(45deg, #4F4F84, #21213C);
+    background: #363652;
 }
 
 body {
     height: 100%;
     color: white;
-    padding: 0;
+    padding-bottom: 20px;
     margin: 0;
     background: transparent;
     overflow: scroll;

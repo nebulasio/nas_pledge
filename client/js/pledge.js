@@ -1,5 +1,5 @@
 $(function () {
-    $("#nano_contract").val(pledgeContract);
+    $("#nano_contract").val(newPledgeContract);
     $("#btn_nano_generate").on("click", genCode);
 
     var li = $(".nav li a").get(0);
@@ -30,7 +30,8 @@ $(function () {
             _updateViewWithAction($("#amount_container"), action);
         }
         hideAllError();
-    })
+    });
+    $("#contract").val(newPledgeContract);
 });
 
 var actions = ["pledge", "cancelPledge"];
@@ -84,7 +85,7 @@ function getPledgeAmount(address, callback) {
     try {
         neb.api.call({
             from: address,
-            to: pledgeContract,
+            to: newPledgeContract,
             value: 0,
             nonce: 0,
             gasPrice: 1000000,
@@ -92,7 +93,7 @@ function getPledgeAmount(address, callback) {
             contract: {
                 "source": "",
                 "sourceType": "js",
-                "function": "getPledgeWithAddress",
+                "function": "getCurrentPledge",
                 "args": "[\"" + address + "\"]",
                 "binary": "",
                 "type": "call"
@@ -103,7 +104,7 @@ function getPledgeAmount(address, callback) {
                 callback(null);
             } else {
                 let p = JSON.parse(r.result);
-                if (p && !p.c) {
+                if (p) {
                     callback(NebUtils.toBigNumber(p.v).toString(10));
                 } else {
                     callback("0");
@@ -132,7 +133,7 @@ function genCode() {
             "pay": {
                 "currency": "NAS",
                 "value": value,
-                "to": pledgeContract,
+                "to": newPledgeContract,
                 "payload": {
                     "function": actions[nanoAction],
                     "args": "[]",
@@ -176,7 +177,7 @@ function generate() {
         if (action === 0) {
             value = NebUnit.nasToBasic($("#amount").val());
         }
-        var tx = new NebTransaction(parseInt(chainId), account, pledgeContract, value, parseInt(nonce), gasprice, gaslimit, contract);
+        var tx = new NebTransaction(parseInt(chainId), account, newPledgeContract, value, parseInt(nonce), gasprice, gaslimit, contract);
         tx.signTransaction();
         $("#output").val(tx.toProtoString());
         didGenerate();

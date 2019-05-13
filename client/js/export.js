@@ -6,6 +6,7 @@ $(function () {
         _updateViewWithAction();
         hideAllError();
     });
+    $("#contract").val(pledgeContract);
 });
 
 var actions = ["stopPledge", "exportDataToNat", "transferAmount"];

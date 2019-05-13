@@ -9,15 +9,15 @@ var neb = new Neb();
 // mainnet
 var chainId = 1;
 var pledgeContract = "n1n5Fctkjx2pA7iLX8rgRyCa7VKinGFNe9H";
+var newPledgeContract = "n1obU14f6Cp4Wv7zANVbtmXKNkpKCqQDgDM";
 var explorerLink = "https://explorer.nebulas.io/#/tx/";
 neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
 
 // testnet
-//var chainId = 1001;
-//var pledgeContract = "n1yrXNjgp85xXbEPg2wZJikp1cm2Vs7rKfu";
-//var explorerLink = "https://explorer.nebulas.io/#/testnet/tx/";
-//neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
-
+// var chainId = 1001;
+// var pledgeContract = "n1yrXNjgp85xXbEPg2wZJikp1cm2Vs7rKfu";
+// var explorerLink = "https://explorer.nebulas.io/#/testnet/tx/";
+// neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
 
 var fileName = null;
 var keystore = null;
@@ -70,7 +70,6 @@ $(function () {
     $("#information").hide();
     $("#balance_container").hide();
     $("#save_container").hide();
-    $("#contract").val(pledgeContract);
 
     bootbox.setDefaults({
         className: "neb_boot_box"
@@ -145,10 +144,10 @@ function _valid(input, method, msg) {
         }
     } else if (method === "pledgeAmount") {
         var amount = input.val();
-        var valid = parseFloat(amount) >= 1;
+        var valid = parseFloat(amount) >= 5;
         if (!valid) {
             if (!msg) {
-                msg = "The amount cannot be less than 1NAS";
+                msg = "The amount cannot be less than 5 NAS";
             }
             setError(input, msg);
             return false;
@@ -331,8 +330,8 @@ function send() {
             scrollTop: document.body.scrollHeight
         }, 1000);
     }).catch(function (o) {
-        hideWaiting();
         alert(o);
+        hideWaiting();
     });
 }
 
