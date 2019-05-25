@@ -18,6 +18,7 @@ $(function () {
     });
 
     $(".menu_item").on("click", function (ele) {
+        $("#code").empty();
         var a = parseInt($(this).attr("tag"));
         var t = $(this).attr("target");
         if (t.indexOf("nano") === 0) {
