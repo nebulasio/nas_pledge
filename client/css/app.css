@@ -179,3 +179,12 @@ button:focus {
 .nav-tabs .active {
     color: white;
 }
+
+.warning {
+    color:red;
+    margin-top: 1rem;
+}
+
+.warning a {
+    color: #fff;
+}
