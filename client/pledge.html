@@ -119,13 +119,13 @@
                 <div class="col-6">
                     <div class="input_title">Action:</div>
                     <div id="action_container" class="dropdown edt_container">
-                        <div href="#" class="dropdown-toggle menu_handler" data-toggle="dropdown">
-                            <span id="action_text">Pledge</span>
+                        <div href="#" class="menu_handler">
+                            <span id="action_text">Cancel Pledge</span>
                             <b class="caret" style="position: absolute; right: 10px"></b>
                         </div>
                         <ul class="dropdown-menu">
-                            <li class="menu_item" target="action_text" tag="0"><a href="#">Pledge</a></li>
-                            <li class="menu_item" target="action_text" tag="1"><a href="#">Cancel pledge</a></li>
+                            <!-- <li class="menu_item" target="action_text" tag="0"><a href="#">Pledge</a></li> -->
+                            <li class="menu_item" target="action_text" tag="1"><a href="#">Cancel Pledge</a></li>
                         </ul>
                     </div>
                 </div>
@@ -155,13 +155,13 @@
                         <input id="nonce2" type="text" valid="int|Please enter the correct nonce."/>
                     </div>
                 </div>
-                <div id="amount_container" class="col-6">
+                <!-- <div id="amount_container" class="col-6">
                     <div class="input_title">Pledge nas amount:</div>
                     <div class="edt_container">
                         <input id="amount" type="text" valid="amount,pledgeAmount"/>
                         <div class="tips">NAS</div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
 
@@ -243,19 +243,19 @@
                 <div class="col-6">
                     <div class="input_title">Action:</div>
                     <div id="nano_action_container" class="dropdown edt_container">
-                        <div href="#" class="dropdown-toggle menu_handler" data-toggle="dropdown">
-                            <span id="nano_action_text">Pledge</span>
+                        <div href="#" class="menu_handler" >
+                            <span id="nano_action_text">Cancel Pledge</span>
                             <b class="caret" style="position: absolute; right: 10px"></b>
                         </div>
-                        <ul class="dropdown-menu">
+                        <!-- <ul class="dropdown-menu">
                             <li class="menu_item" target="nano_action_text" tag="0"><a href="#">Pledge</a></li>
-                            <li class="menu_item" target="nano_action_text" tag="1"><a href="#">Cancel pledge</a></li>
-                        </ul>
+                            <li class="menu_item" target="nano_action_text" tag="1"><a href="#">Cancel Pledge</a></li>
+                        </ul> -->
                     </div>
                 </div>
             </div>
 
-            <div id="nano_amount_container" class="row" style="margin-top: 5px">
+            <!-- <div id="nano_amount_container" class="row" style="margin-top: 5px">
                 <div class="col-12">
                     <div class="input_title">Pledge nas amount:</div>
                     <div class="edt_container">
@@ -263,14 +263,14 @@
                         <div class="tips">NAS</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div id="nano_amount_container" class="row" style="margin-top: 5px">
+            <div class="row" style="margin-top: 5px">
                 <div class="col-12">
                     <p>If you want to pledge more via the same address, please cancel all pledge first.</p>
                     <button id="btn_nano_generate">Generate QR code</button>
                 </div>
-            </div>
+            </div> 
 
             <div id="code_container" class="row" style="margin-top: 10px; display: none;">
                 <div class="col-12">
